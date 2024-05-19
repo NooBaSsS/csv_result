@@ -11,7 +11,15 @@ base = {'id': 0,
         'education': 7,
         'english_language': 8,
         }
-directory_path = input('Введите путь до ПАПКИ ТОЛЬКО с ФАЙЛАМИ ДЛЯ АНАЛИЗА ' +
+os.system('cls')
+print(
+    'эта программа найдет и отсортирует всех кандидатов, находящихся в',
+    '.csv файлах этой папки, а так же дочерних'
+      )
+directory_path = input('Введите путь до ПАПКИ ТОЛЬКО с ФАЙЛАМИ ДЛЯ АНАЛИЗА. ' +
+                       'Если оставить поле ввода пустым то программа будет' +
+                       'использовать папку,' +
+                       'в которой находился запускаемый файл' +
                        '(в папке не должно содержаться других .csv файлов): ')
 file_extension = '.csv'
 candidates = []
@@ -25,6 +33,9 @@ def list_files_in_directory(directory, extension=None):
     '''
     возвращает список .csv файлов, найденых в папке, указанной пользователем
     '''
+    if not directory:
+        directory = os.path.dirname(os.path.realpath(__file__))
+        print(directory)
     absolute_paths = []
     for root, dirs, files in os.walk(directory):
         for file in files:
