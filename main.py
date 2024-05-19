@@ -106,7 +106,7 @@ def sort_approved():
     сортрует допущенных в соответствии с правилами
     приоритет от 27 до 37 лет
     далее по алфавиту имя+фамилия
-    после сортировки изменяет их id по порядку
+    после сортировки изменяет их id согласно их порядку
     '''
     global approved
     candidates_in_age = []
@@ -133,6 +133,7 @@ def write_to_file():
                              element[4],
                              element[5],
                              element[7],
+                             element[3],
                              ])
         print(f'файл result.csv был сохранен в: {os.path.abspath(file.name)}')
 
