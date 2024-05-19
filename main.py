@@ -11,7 +11,8 @@ base = {'id': 0,
         'education': 7,
         'english_language': 8,
         }
-directory_path = input('Введите путь до ПАПКИ ТОЛЬКО с ФАЙЛАМИ ".csv" ДЛЯ АНАЛИЗА (в папке не должно содержаться других .csv файлов): ')
+directory_path = input('Введите путь до ПАПКИ ТОЛЬКО с ФАЙЛАМИ ДЛЯ АНАЛИЗА ' +
+                       '(в папке не должно содержаться других .csv файлов): ')
 file_extension = '.csv'
 candidates = []
 sort_idx = []
@@ -21,6 +22,9 @@ approved = []
 
 
 def list_files_in_directory(directory, extension=None):
+    '''
+    возвращает список .csv файлов, найденых в папке, указанной пользователем
+    '''
     absolute_paths = []
     for root, dirs, files in os.walk(directory):
         for file in files:
@@ -31,7 +35,9 @@ def list_files_in_directory(directory, extension=None):
 
 
 def get_number_of_rows(file_):
-    '''возвращает количество строк в файле csv'''
+    '''
+    возвращает количество строк в файле csv
+    '''
     with open(file_) as file:
         return len(list(csv.reader(file)))
 
@@ -85,16 +91,6 @@ def sort_data():
 def qualify():
     '''
     отбрасывает не подходщих кандидатов
-    '''
-    '''
-    не менее 20 и не более 59 лет  key:3
-    150-190 см  key:4
-    зрение 1.0  key: 6
-    Master или PhD  key: 7
-    знание английского: true  key: 8
-    '''
-    '''
-    15 должно остаться
     '''
     for candidate in sorted_data:
         if 20 <= int(candidate[3]) or int(candidate[3]) >= 59:
